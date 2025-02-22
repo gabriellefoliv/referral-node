@@ -9,6 +9,7 @@ import {
 import { fastifySwagger } from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
 import { subscriptToEventRoute } from './routes/subscripte-to-event-route'
+import { env } from './env'
 
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -43,6 +44,6 @@ app.get('/hello', () => {
     return 'Hello World'
 })
 
-app.listen({ port: 3333 }).then(() => {
+app.listen({ port: env.PORT }).then(() => {
     console.log('HTTP server running!')
 })
