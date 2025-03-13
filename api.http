@@ -9,3 +9,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3333/invites/gabriellefoliv
+
+### 
+
+GET http://localhost:3333/subscribers/gabriellefoliv/ranking/clicks
