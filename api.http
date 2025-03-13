@@ -5,3 +5,7 @@ Content-Type: application/json
     "name": "Gabrielle Oliveira",
     "email": "oliveiragabrielle@gmail.com"
 }
+
+###
+
+GET http://localhost:3333/invites/gabriellefoliv
