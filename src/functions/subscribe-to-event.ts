@@ -1,5 +1,4 @@
-import { db } from '../drizzle/client'
-import { subscriptions } from '../drizzle/schema/subscriptions'
+import { prisma } from '../lib/prisma'
 
 interface SubscribeToEventParams {
   name: string
@@ -10,15 +9,12 @@ export async function subscribeToEvent({
   name,
   email,
 }: SubscribeToEventParams) {
-  const result = await db
-    .insert(subscriptions)
-    .values({
+  const subscriber = await prisma.subscription.create({
+    data: {
       name,
       email,
-    })
-    .returning()
-
-  const subscriber = result[0]
+    },
+  })
 
   return {
     subscriberId: subscriber.id,
