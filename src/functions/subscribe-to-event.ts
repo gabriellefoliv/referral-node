@@ -1,13 +1,16 @@
 import { prisma } from '../lib/prisma'
+import { redis } from '../redis/client'
 
 interface SubscribeToEventParams {
   name: string
   email: string
+  referrerId?: string | null
 }
 
 export async function subscribeToEvent({
   name,
   email,
+  referrerId,
 }: SubscribeToEventParams) {
   const subscribers = await prisma.subscription.findMany({
     where: {
@@ -26,6 +29,11 @@ export async function subscribeToEvent({
       email,
     },
   })
+
+  if (referrerId) {
+    // sorted sets -> ordenação automática (zincrby)
+    await redis.zincrby('referral:ranking', 1, referrerId)
+  }
 
   return {
     subscriberId: subscriber.id,
