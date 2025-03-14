@@ -2,14 +2,27 @@ POST http://localhost:3333/subscriptions
 Content-Type: application/json
 
 {
-    "name": "Gabrielle Oliveira",
-    "email": "oliveiragabrielle@gmail.com"
+    "name": "Usuário Indicado 3",
+    "email": "indicado3@serrajr.com",
+    "referrer": "4cc65987-314b-4b65-9f80-1520a9d15056"
 }
 
 ###
 
-GET http://localhost:3333/invites/gabriellefoliv
+GET http://localhost:3333/invites/cd3cda17-f388-43f7-9431-d72b7ea88f26
 
 ### 
 
-GET http://localhost:3333/subscribers/gabriellefoliv/ranking/clicks
+GET http://localhost:3333/subscribers/cd3cda17-f388-43f7-9431-d72b7ea88f26/ranking/clicks
+
+###
+
+GET http://localhost:3333/subscribers/cd3cda17-f388-43f7-9431-d72b7ea88f26/ranking/count
+
+###
+
+GET http://localhost:3333/subscribers/cd3cda17-f388-43f7-9431-d72b7ea88f26/ranking/position
+
+###
+
+GET http://localhost:3333/ranking
